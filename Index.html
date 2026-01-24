@@ -3,13 +3,13 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shaheen Rugs | Luxury Export Catalog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Shaheen Rugs | Luxury Carpet Exporter</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap"
         rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -17,249 +17,240 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body oncontextmenu="return false">
+<body>
 
-    <nav class="navbar">
+    <nav>
         <div class="brand-container">
-            <img src="Assets/Logo.png" alt="Shaheen Logo" class="logo">
-            <span class="company-name">SHAHEEN RUGS</span>
+            <img src="Assets/Logo.png" alt="Shaheen Rugs" class="nav-logo">
+            <span class="brand-name">Shaheen Rugs</span>
         </div>
-        <ul class="nav-links">
-            <li><a href="#" class="active">Home</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
+
+        <div class="nav-links">
+            <a href="index.html" class="active">Home</a>
+            <a href="collection.html">Our Collection</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="story.html">Our Story</a>
+            <a href="contact.html">Contact</a>
+        </div>
+
+        <div class="mobile-menu-icon" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
     </nav>
 
+    <div class="mobile-drawer" id="mobileDrawer">
+        <span class="close-btn" onclick="toggleMenu()">&times;</span>
+        <a href="index.html">Home</a>
+        <a href="collection.html">Our Collection</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="story.html">Our Story</a>
+        <a href="contact.html">Contact</a>
+    </div>
+
     <header class="hero">
-        <div class="overlay"></div>
+        <div class="hero-slider">
+            <div class="slide active" style="background-image: url('Assets/hero-1.jpg');"></div>
+            <div class="slide" style="background-image: url('Assets/hero-2.jpg');"></div>
+            <div class="slide" style="background-image: url('Assets/hero-3.jpg');"></div>
+        </div>
+
+        <div class="hero-overlay"></div>
+
         <div class="hero-content">
-            <h1>Timeless Luxury Underfoot</h1>
-            <p>Crafted with Care. Made to Belong.</p>
+            <h1>Artistry Underfoot</h1>
+            <p>Handmade Rugs for the World</p>
+            <a href="#collection-section" class="hero-btn">View Designs</a>
         </div>
     </header>
 
-    <section class="catalog-section">
-        <div class="section-header">
-            <h2>The Export Collection</h2>
-            <div class="separator"></div>
+    <section id="collection-section" class="section-wrapper">
+        <div class="sec-header">
+            <span class="sec-sub">Exquisite Craftsmanship</span>
+            <h2 class="sec-title">Browse Our Collection</h2>
+            <div class="title-underline"></div>
         </div>
 
-
-
-        <div class="grid-container">
-
-            <div class="card">
-                <div class="image-wrapper">
-                    <a href="https://wa.me/9236139151?text=I%20want%20Pricing%20and%20Details%20of%20this%20Carpet%20TF-SR-1131-26"
-                        target="_blank" class="whatsapp-btn">
-                        <i class="fa-brands fa-whatsapp"></i> Inquire
-                    </a>
-                    <img src="Carpet Images/14.png" alt="TF-SR-1131-26">
+        <div class="collection-grid">
+            <div class="collection-card">
+                <div class="c-img-box">
+                    <img src="Carpet Images/1.png" alt="Carpet">
+                    <div class="overlay">
+                        <a href="https://wa.me/919876543210?text=Inquiry%20for%20TF-SR-1135-26"
+                            class="overlay-btn">Inquire
+                            Now</a>
+                    </div>
                 </div>
-                <div class="card-details">
-                    <h3>TF-SR-1131-26</h3>
-
+                <div class="c-details">
+                    <h3>Design Number (TF-SR-1135-26)</h3>
                 </div>
             </div>
 
-             <div class="card">
-                <div class="image-wrapper">
-                    <a href="https://wa.me/9236139151?text=I%20want%20Pricing%20and%20Details%20of%20this%20Carpet%20TF-SR-1146-26"
-                        target="_blank" class="whatsapp-btn">
-                        <i class="fa-brands fa-whatsapp"></i> Inquire
-                    </a>
-                    <img src="Carpet Images/13.png" alt="TF-SR-1146-26">
+            <div class="collection-card">
+                <div class="c-img-box">
+                    <img src="Carpet Images/2.png" alt="Carpet">
+                    <div class="overlay">
+                        <a href="https://wa.me/919876543210?text=Inquiry%20for%20TF-SR-1123-26"
+                            class="overlay-btn">Inquire
+                            Now</a>
+                    </div>
                 </div>
-                <div class="card-details">
-                    <h3>TF-SR-1146-26</h3>
-
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="image-wrapper">
-                    <a href="https://wa.me/9236139151?text=I%20want%20Pricing%20and%20Details%20of%20this%20Carpet%20TF-SR-1120-26 (Black Color)"
-                        target="_blank" class="whatsapp-btn">
-                        <i class="fa-brands fa-whatsapp"></i> Inquire
-                    </a>
-                    <img src="Carpet Images/12.png" alt="TF-SR-1120-26 (Black Color)">
-                </div>
-                <div class="card-details">
-                    <h3>TF-SR-1120-26 (Black Color)</h3>
+                <div class="c-details">
+                    <h3>Design Number (TF-SR-1123-26)</h3>
 
                 </div>
             </div>
-
-            <div class="card">
-                <div class="image-wrapper">
-                    <a href="https://wa.me/9236139151?text=I%20want%20Pricing%20and%20Details%20of%20this%20Carpet%20TF-SR-1119-26"
-                        target="_blank" class="whatsapp-btn">
-                        <i class="fa-brands fa-whatsapp"></i> Inquire
-                    </a>
-                    <img src="Carpet Images/11.png" alt="TF-SR-1119-26">
+            <div class="collection-card">
+                <div class="c-img-box">
+                    <img src="Carpet Images/3.png" alt="Carpet">
+                    <div class="overlay">
+                        <a href="https://wa.me/919876543210?text=Inquiry%20for%20TF-SR-1129-26"
+                            class="overlay-btn">Inquire
+                            Now</a>
+                    </div>
                 </div>
-                <div class="card-details">
-                    <h3>TF-SR-1119-26</h3>
-
-                </div>
-            </div>
-
-
-             <div class="card">
-                <div class="image-wrapper">
-                    <a href="https://wa.me/9236139151?text=I%20want%20Pricing%20and%20Details%20of%20this%20Carpet%20TF-SR-1121-26"
-                        target="_blank" class="whatsapp-btn">
-                        <i class="fa-brands fa-whatsapp"></i> Inquire
-                    </a>
-                    <img src="Carpet Images/10.png" alt="TF-SR-1121-26">
-                </div>
-                <div class="card-details">
-                    <h3>TF-SR-1121-26</h3>
+                <div class="c-details">
+                    <h3>Design Number (TF-SR-1129-26)</h3>
 
                 </div>
             </div>
-
-
-            <div class="card">
-                <div class="image-wrapper">
-                    <a href="https://wa.me/9236139151?text=I%20want%20Pricing%20and%20Details%20of%20this%20Carpet%20SR-001-25"
-                        target="_blank" class="whatsapp-btn">
-                        <i class="fa-brands fa-whatsapp"></i> Inquire
-                    </a>
-                    <img src="Carpet Images/7.png" alt="SR-001-25">
+            <div class="collection-card">
+                <div class="c-img-box">
+                    <img src="Carpet Images/4.png" alt="Carpet">
+                    <div class="overlay">
+                        <a href="https://wa.me/919876543210?text=Inquiry%20for%20TF-SR-1124-26"
+                            class="overlay-btn">Inquire
+                            Now</a>
+                    </div>
                 </div>
-                <div class="card-details">
-                    <h3>SR-001-25</h3>
-
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="image-wrapper">
-                    <a href="https://wa.me/9236139151?text=I%20want%20Pricing%20and%20Details%20of%20this%20Carpet%20SR-002-25"
-                        target="_blank" class="whatsapp-btn">
-                        <i class="fa-brands fa-whatsapp"></i> Inquire
-                    </a>
-                    <img src="Carpet Images/8.png" alt="SR-002-25">
-                </div>
-                <div class="card-details">
-                    <h3>SR-002-25</h3>
+                <div class="c-details">
+                    <h3>Design Number (TF-SR-1124-26)</h3>
 
                 </div>
             </div>
+        </div>
+        <div style="text-align: center; margin-top: 50px;">
+            <a href="collection.html" class="view-all-btn">View All Collections</a>
+        </div>
+    </section>
 
-            <div class="card">
-                <div class="image-wrapper">
-                    <a href="https://wa.me/9236139151?text=I%20want%20Pricing%20and%20Details%20of%20this%20Carpet%20SR-003-25"
-                        target="_blank" class="whatsapp-btn">
-                        <i class="fa-brands fa-whatsapp"></i> Inquire
-                    </a>
-                    <img src="Carpet Images/9.png" alt="SR-003-25">
-                </div>
-                <div class="card-details">
-                    <h3>SR-003-25</h3>
+    <section class="collage-section">
+        <div class="collage-container">
 
-                </div>
+            <div class="collage-col left-col">
+                <div class="col-img small"><img src="Assets/Rug Detail.png" alt="Rug Detail"></div>
+                <div class="col-img tall"><img src="Assets/Living Room.jpg" alt="Living Room"></div>
+                <div class="col-img small"><img src="Assets/Texture.png" alt="Texture"></div>
             </div>
 
-
-
-            <div class="card">
-                <div class="image-wrapper">
-                    <a href="https://wa.me/9236139151?text=I%20want%20Pricing%20and%20Details%20of%20this%20Carpet%20TF-SR-1135-26"
-                        target="_blank" class="whatsapp-btn">
-                        <i class="fa-brands fa-whatsapp"></i> Inquire
-                    </a>
-                    <img src="Carpet Images/1.png" alt="Luxury Rug TF-SR-1135-26">
-                    <span class="badge">New Arrival</span>
-                </div>
-                <div class="card-details">
-                    <h3>TF-SR-1135-26</h3>
-                </div>
+            <div class="collage-center">
+                <span class="collage-sub">Shaheen Rugs</span>
+                <h2>Crafted with Care,<br>Made to Belong</h2>
+                <a href="story.html" class="collage-btn">Read Our Story</a>
             </div>
 
-            <div class="card">
-                <div class="image-wrapper">
-                    <a href="https://wa.me/9236139151?text=I%20want%20Pricing%20and%20Details%20of%20this%20Carpet%20TF-SR-1123-26"
-                        target="_blank" class="whatsapp-btn">
-                        <i class="fa-brands fa-whatsapp"></i> Inquire
-                    </a>
-                    <img src="Carpet Images/2.png" alt="Luxury Rug SR-101">
-                    <span class="badge">New Arrival</span>
-                </div>
-                <div class="card-details">
-                    <h3>TF-SR-1123-26</h3>
-
-                </div>
+            <div class="collage-col right-col">
+                <div class="col-img small"><img src="Assets/Details.jpg" alt="Detail"></div>
+                <div class="col-img tall"><img src="Assets/Bedroom.png" alt="Bedroom"></div>
+                <div class="col-img small"><img src="Assets/Rug.jpg" alt="Rug "></div>
             </div>
-
-            <div class="card">
-                <div class="image-wrapper">
-                    <a href="https://wa.me/9236139151?text=I%20want%20Pricing%20and%20Details%20of%20this%20Carpet%20TF-SR-1129-26"
-                        target="_blank" class="whatsapp-btn">
-                        <i class="fa-brands fa-whatsapp"></i> Inquire
-                    </a>
-                    <img src="Carpet Images/3.png" alt="Luxury Rug TF-SR-1129-26">
-                    <span class="badge">New Arrival</span>
-
-                </div>
-                <div class="card-details">
-                    <h3>TF-SR-1129-26</h3>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="image-wrapper">
-                    <a href="https://wa.me/9236139151?text=I%20want%20Pricing%20and%20Details%20of%20this%20Carpet%20TF-SR-1124-26"
-                        target="_blank" class="whatsapp-btn">
-                        <i class="fa-brands fa-whatsapp"></i> Inquire
-                    </a>
-                    <img src="Carpet Images/4.png" alt="TF-SR-1124-26">
-                </div>
-                <div class="card-details">
-                    <h3>TF-SR-1124-26</h3>
-
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="image-wrapper">
-                    <a href="https://wa.me/9236139151?text=I%20want%20Pricing%20and%20Details%20of%20this%20Carpet%20TF-SR-1133-26"
-                        target="_blank" class="whatsapp-btn">
-                        <i class="fa-brands fa-whatsapp"></i> Inquire
-                    </a>
-                    <img src="Carpet Images/5.png" alt="TF-SR-1133-26">
-                </div>
-                <div class="card-details">
-                    <h3>TF-SR-1133-26</h3>
-
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="image-wrapper">
-                    <a href="https://wa.me/9236139151?text=I%20want%20Pricing%20and%20Details%20of%20this%20Carpet%20TF-SR-1136-26"
-                        target="_blank" class="whatsapp-btn">
-                        <i class="fa-brands fa-whatsapp"></i> Inquire
-                    </a>
-                    <img src="Carpet Images/6.png" alt="TF-SR-1136-26">
-                </div>
-                <div class="card-details">
-                    <h3>TF-SR-1136-26</h3>
-
-                </div>
-            </div>
-
-
 
         </div>
     </section>
 
+    <section class="custom-section">
+        <div class="custom-box">
+            <div class="custom-icon"><i class="fas fa-pencil-ruler"></i></div>
+            <h2 class="sec-title">Custom Carpet Made Just For You</h2>
+            <p style="color:var(--text-muted); margin-bottom: 30px;">
+                Size, Color, Design – We weave your imagination into reality.
+            </p>
+            <a href="https://wa.me/919876543210?text=I%20am%20interested%20in%20a%20Custom%20Order" class="hero-btn"
+                style="background: var(--gold); color: black; border:none;">
+                Start Custom Project
+            </a>
+        </div>
+    </section>
+
+    <section class="section-wrapper">
+        <div class="sec-header">
+            <span class="sec-sub">Versatility in Design</span>
+            <h2 class="sec-title">Elevating Every Interior</h2>
+            <div class="title-underline"></div>
+            <p
+                style="color: var(--text-muted); margin-top: 15px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                From grand hotel lobbies to intimate private residences, our carpets define the character of a room.
+            </p>
+        </div>
+
+        <div class="space-grid">
+
+            <div class="space-item">
+                <div class="space-img-box">
+                    <img src="Assets/Space-Living.png" alt="Luxury Living Room">
+                    <div class="space-overlay">
+                        <span>Residential</span>
+                    </div>
+                </div>
+                <h3>Living Spaces</h3>
+            </div>
+
+            <div class="space-item">
+                <div class="space-img-box">
+                    <img src="Assets/Private-Suits.png" alt="Master Bedroom">
+                    <div class="space-overlay">
+                        <span>Comfort</span>
+                    </div>
+                </div>
+                <h3>Private Suites</h3>
+            </div>
+
+            <div class="space-item">
+                <div class="space-img-box">
+                    <img src="Assets/Formal-Dining.png" alt="Formal Dining">
+                    <div class="space-overlay">
+                        <span>Hospitality</span>
+                    </div>
+                </div>
+                <h3>Formal Dining</h3>
+            </div>
+
+            <div class="space-item">
+                <div class="space-img-box">
+                    <img src="Assets/Executive.jpg" alt="Executive Office">
+                    <div class="space-overlay">
+                        <span>Corporate</span>
+                    </div>
+                </div>
+                <h3>Executive Offices</h3>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="vision-section">
+        <p class="vision-text">
+            "Our vision is to bring the <span class="highlight">timeless art of Indian weaving</span> to modern homes
+            globally."
+        </p>
+    </section>
+
     <footer>
-        <p>&copy; 2026 Shaheen Rugs. All Rights Reserved.</p>
+        <img src="Assets/Logo.png" alt="Shaheen Rugs" class="nav-logo" style="margin: 0 auto 20px auto;">
+        <div class="f-socials">
+            <a href="#" class="f-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="f-icon"><i class="fab fa-facebook-f"></i></a>
+        </div>
+        <div class="f-contact">
+            <p>Jalalpur Bhadohi - 221401 - Uttar Pradesh - INDIA</p>
+            <p>+91 9236139151 | shaheenrugs77@gmail.com</p>
+        </div>
+        <p class="copyright">© 2026 Shaheen Rugs. All Rights Reserved.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="Main.js"></script>
+    <script>
+        function toggleMenu() { document.getElementById('mobileDrawer').classList.toggle('active'); }
+    </script>
 </body>
 
 </html>
