@@ -11,7 +11,11 @@
 }
 
 /* RESET */
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 body {
     background-color: var(--bg-dark);
@@ -21,197 +25,493 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-a { text-decoration: none; color: inherit; transition: 0.3s ease; }
-img { width: 100%; display: block; object-fit: cover; }
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: 0.3s ease;
+}
+
+img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+}
 
 /* 🧭 NAVBAR */
 nav {
-    position: fixed; top: 0; left: 0; width: 100%; height: var(--nav-height);
-    display: flex; justify-content: space-between; align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--nav-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding-left: max(5%, env(safe-area-inset-left));
     padding-right: max(5%, env(safe-area-inset-right));
-    padding-top: env(safe-area-inset-top); 
+    padding-top: env(safe-area-inset-top);
     background: var(--nav-bg);
     backdrop-filter: blur(12px);
     z-index: 9999;
     border-bottom: 1px solid rgba(212, 175, 55, 0.2);
 }
-.brand-container { display: flex; align-items: center; gap: 12px; }
-.nav-logo { height: 45px; width: auto; object-fit: contain; }
-.brand-name {
-    font-family: 'Playfair Display', serif; text-transform: uppercase; letter-spacing: 2px;
-    font-size: 1.2rem; color: var(--text-main); font-weight: 700;
-}
-.nav-links { display: flex; gap: 30px; align-items: center; }
-.nav-links a {
-    font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 500;
-    color: var(--text-main); position: relative;
-}
-.nav-links a:hover, .nav-links a.active { color: var(--gold); }
-.nav-links a::after {
-    content: ''; position: absolute; width: 0; height: 1px; bottom: -5px; left: 0;
-    background-color: var(--gold); transition: width 0.3s;
-}
-.nav-links a:hover::after { width: 100%; }
 
-.mobile-menu-icon { display: none; font-size: 1.5rem; color: var(--gold); cursor: pointer; }
-.mobile-drawer {
-    position: fixed; top: 0; right: -100%; width: 250px; height: 100vh;
-    background: var(--bg-card); border-left: 1px solid var(--gold);
-    padding: 60px 20px; transition: 0.4s ease; z-index: 10000;
-    display: flex; flex-direction: column; gap: 20px;
+/* SEO-safe hidden H1 */
+.seo-h1 {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
 }
-.mobile-drawer.active { right: 0; }
-.mobile-drawer a { font-size: 1.1rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px; }
-.close-btn { position: absolute; top: 20px; right: 20px; font-size: 2rem; cursor: pointer; color: var(--gold); }
+
+/* Preserve existing hero typography */
+.hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 600;
+    color: white;
+}
+
+.visually-hidden {
+  position: absolute;
+  left: -9999px;
+}
+
+
+
+.brand-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nav-logo {
+    height: 45px;
+    width: auto;
+    object-fit: contain;
+}
+
+.brand-name {
+    font-family: 'Playfair Display', serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 1.2rem;
+    color: var(--text-main);
+    font-weight: 700;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.nav-links a {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+    color: var(--text-main);
+    position: relative;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--gold);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--gold);
+    transition: width 0.3s;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.mobile-menu-icon {
+    display: none;
+    font-size: 1.5rem;
+    color: var(--gold);
+    cursor: pointer;
+}
+
+.mobile-drawer {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 250px;
+    height: 100vh;
+    background: var(--bg-card);
+    border-left: 1px solid var(--gold);
+    padding: 60px 20px;
+    transition: 0.4s ease;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.mobile-drawer.active {
+    right: 0;
+}
+
+.mobile-drawer a {
+    font-size: 1.1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 10px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--gold);
+}
 
 /* -----------------------------------------------------------
    1. HERO SLIDER
    ----------------------------------------------------------- */
 .hero {
-    position: relative; height: 100dvh; width: 100%;
-    display: flex; flex-direction: column; justify-content: center; align-items: center;
-    text-align: center; overflow: hidden;
+    position: relative;
+    height: 100dvh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
 }
-.hero-slider { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+
+.hero-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
 .slide {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    background-size: cover; background-position: center;
-    opacity: 0; transition: opacity 1.5s ease-in-out;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
 }
-.slide.active { opacity: 1; }
+
+.slide.active {
+    opacity: 1;
+}
+
 .hero-overlay {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(to top, rgba(10,18,14,1), rgba(0,0,0,0.3)); z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(10, 18, 14, 1), rgba(0, 0, 0, 0.3));
+    z-index: 2;
 }
-.hero-content { position: relative; z-index: 3; padding-top: 80px; }
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    padding-top: 80px;
+}
 
 .hero h1 {
-    font-family: 'Playfair Display', serif; font-size: 3.5rem; color: var(--gold);
-    margin-bottom: 10px; line-height: 1.1; text-shadow: 0 4px 20px rgba(0,0,0,0.8);
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    color: var(--gold);
+    margin-bottom: 10px;
+    line-height: 1.1;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
 }
+
 .hero p {
-    font-size: 1.1rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 30px;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
 }
+
 .hero-btn {
-    border: 1px solid var(--gold); padding: 14px 40px; color: var(--gold);
-    text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem;
-    background: rgba(0,0,0,0.6); backdrop-filter: blur(5px);
+    border: 1px solid var(--gold);
+    padding: 14px 40px;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.85rem;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
 }
-.hero-btn:hover { background: var(--gold); color: black; }
+
+.hero-btn:hover {
+    background: var(--gold);
+    color: black;
+}
 
 /* -----------------------------------------------------------
    2. BROWSE COLLECTION (UPDATED SIZES & BUTTON)
    ----------------------------------------------------------- */
-.section-wrapper { padding: 100px 5%; max-width: 1600px; margin: 0 auto; } /* Increased max-width */
-.sec-header { text-align: center; margin-bottom: 60px; }
+.section-wrapper {
+    padding: 100px 5%;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+/* Increased max-width */
+.sec-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
 .sec-title {
-    font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--text-main); margin-bottom: 15px;
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: var(--text-main);
+    margin-bottom: 15px;
 }
+
 .sec-sub {
-    color: var(--gold); text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem; display: block; margin-bottom: 10px;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.8rem;
+    display: block;
+    margin-bottom: 10px;
 }
-.title-underline { width: 60px; height: 2px; background: var(--gold); margin: 0 auto; }
 
-.collection-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; } /* Tighter gap */
+.title-underline {
+    width: 60px;
+    height: 2px;
+    background: var(--gold);
+    margin: 0 auto;
+}
 
-.collection-card { background: transparent; text-align: center; cursor: pointer; position: relative; }
+.collection-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+/* Tighter gap */
+
+.collection-card {
+    background: transparent;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+}
 
 /* ✅ MADE TALLER (2/3 Aspect Ratio) */
 .c-img-box {
-    position: relative; width: 100%; aspect-ratio: 2/3; 
-    overflow: hidden; margin-bottom: 15px;
+    position: relative;
+    width: 100%;
+    aspect-ratio: 2/3;
+    overflow: hidden;
+    margin-bottom: 15px;
 }
-.c-img-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-.collection-card:hover .c-img-box img { transform: scale(1.05); }
+
+.c-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.collection-card:hover .c-img-box img {
+    transform: scale(1.05);
+}
 
 /* ✅ OVERLAY & BUTTON POSITIONING (Bottom Right) */
 .overlay {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); /* Subtle gradient for text readability */
-    opacity: 0; transition: 0.3s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+    /* Subtle gradient for text readability */
+    opacity: 0;
+    transition: 0.3s ease;
 }
-.collection-card:hover .overlay { opacity: 1; }
+
+.collection-card:hover .overlay {
+    opacity: 1;
+}
 
 .overlay-btn {
-    position: absolute; 
-    bottom: 15px; 
+    position: absolute;
+    bottom: 15px;
     right: 15px;
-    background: var(--gold); 
-    color: black; 
+    background: var(--gold);
+    color: black;
     padding: 10px 20px;
-    text-transform: uppercase; 
-    font-size: 0.75rem; 
+    text-transform: uppercase;
+    font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 1px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
-.overlay-btn:hover { background: white; }
 
-.c-details h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--text-main); margin-bottom: 5px; }
-.c-details p { color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+.overlay-btn:hover {
+    background: white;
+}
+
+.c-details h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--text-main);
+    margin-bottom: 5px;
+}
+
+.c-details p {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
 
 .view-all-btn {
-    display: inline-block; border-bottom: 1px solid var(--gold);
-    color: var(--text-main); padding-bottom: 5px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px;
+    display: inline-block;
+    border-bottom: 1px solid var(--gold);
+    color: var(--text-main);
+    padding-bottom: 5px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
-.view-all-btn:hover { color: var(--gold); }
+
+.view-all-btn:hover {
+    color: var(--gold);
+}
 
 /* -----------------------------------------------------------
    3. COLLAGE SECTION (UPDATED FOR MORE IMAGES)
    ----------------------------------------------------------- */
 .collage-section {
-    background: var(--text-main); 
+    background: var(--text-main);
     color: var(--bg-dark);
-    padding: 80px 2%; /* Less padding to fit more content */
+    padding: 80px 2%;
+    /* Less padding to fit more content */
 }
 
 .collage-container {
-    max-width: 1400px; margin: 0 auto;
+    max-width: 1400px;
+    margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1.2fr 1fr; /* Center slightly wider */
+    grid-template-columns: 1fr 1.2fr 1fr;
+    /* Center slightly wider */
     gap: 15px;
     align-items: center;
 }
 
 .collage-col {
-    display: flex; flex-direction: column; gap: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
-.col-img img { width: 100%; height: 100%; object-fit: cover; }
-.col-img.small { height: 180px; }
-.col-img.tall { height: 320px; }
 
-.collage-center { text-align: center; padding: 20px; }
+.col-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.col-img.small {
+    height: 180px;
+}
+
+.col-img.tall {
+    height: 320px;
+}
+
+.collage-center {
+    text-align: center;
+    padding: 20px;
+}
+
 .collage-sub {
-    font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; color: #555; display: block; margin-bottom: 10px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #555;
+    display: block;
+    margin-bottom: 10px;
 }
+
 .collage-center h2 {
-    font-family: 'Playfair Display', serif; font-size: 3.5rem; color: #000;
-    line-height: 1; margin-bottom: 20px; text-transform: uppercase;
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    color: #000;
+    line-height: 1;
+    margin-bottom: 20px;
+    text-transform: uppercase;
 }
+
 .collage-badge {
-    display: block; font-size: 0.9rem; color: #333; letter-spacing: 2px; margin-bottom: 30px;
+    display: block;
+    font-size: 0.9rem;
+    color: #333;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
 }
 
 .collage-btn {
-    background: #222; color: #fff; padding: 15px 40px;
-    text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem;
-    display: inline-block; transition: 0.3s;
+    background: #222;
+    color: #fff;
+    padding: 15px 40px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    display: inline-block;
+    transition: 0.3s;
 }
-.collage-btn:hover { background: var(--gold); color: #000; }
+
+.collage-btn:hover {
+    background: var(--gold);
+    color: #000;
+}
 
 /* -----------------------------------------------------------
    OTHER SECTIONS
    ----------------------------------------------------------- */
 .custom-section {
-    background-color: var(--bg-card); padding: 80px 5%; text-align: center;
+    background-color: var(--bg-card);
+    padding: 80px 5%;
+    text-align: center;
     border-top: 1px solid rgba(212, 175, 55, 0.1);
 }
+
 .custom-box {
-    border: 1px solid var(--gold); padding: 50px 20px; max-width: 800px; margin: 0 auto;
+    border: 1px solid var(--gold);
+    padding: 50px 20px;
+    max-width: 800px;
+    margin: 0 auto;
 }
-.custom-icon { font-size: 3rem; color: var(--gold); margin-bottom: 20px; }
+
+.custom-icon {
+    font-size: 3rem;
+    color: var(--gold);
+    margin-bottom: 20px;
+}
 
 /* -----------------------------------------------------------
    5. INTERIOR INSPIRATION (Redesigned)
@@ -224,16 +524,18 @@ nav {
 
 .space-item {
     text-align: center;
-    cursor: default; /* Not clickable like a shop product */
+    cursor: default;
+    /* Not clickable like a shop product */
 }
 
 .space-img-box {
     position: relative;
     width: 100%;
-    aspect-ratio: 1/1; /* Perfect Square */
+    aspect-ratio: 1/1;
+    /* Perfect Square */
     overflow: hidden;
     margin-bottom: 20px;
-    border: 1px solid rgba(255,255,255,0.05);
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .space-img-box img {
@@ -251,8 +553,11 @@ nav {
 /* Overlay Effect */
 .space-overlay {
     position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.4);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -271,7 +576,7 @@ nav {
     text-transform: uppercase;
     font-size: 0.8rem;
     letter-spacing: 2px;
-    background: rgba(0,0,0,0.6);
+    background: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(4px);
 }
 
@@ -285,36 +590,102 @@ nav {
 
 /* Responsive */
 @media (max-width: 992px) {
-    .space-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+    .space-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
 }
 
-.vision-section { padding: 100px 20px; text-align: center; background: var(--bg-dark); }
-.vision-text {
-    font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--text-muted);
-    max-width: 800px; margin: 0 auto; line-height: 1.8; font-style: italic;
+.vision-section {
+    padding: 100px 20px;
+    text-align: center;
+    background: var(--bg-dark);
 }
-.highlight { color: var(--text-main); }
+
+.vision-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--text-muted);
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.8;
+    font-style: italic;
+}
+
+.highlight {
+    color: var(--text-main);
+}
 
 /* FOOTER */
 footer {
-    background: var(--bg-card); padding: 60px 20px 30px; text-align: center;
+    background: var(--bg-card);
+    padding: 60px 20px 30px;
+    text-align: center;
     border-top: 1px solid rgba(212, 175, 55, 0.2);
 }
-.f-logo { height: 50px; margin-bottom: 20px; }
-.f-socials { display: flex; justify-content: center; gap: 20px; margin: 25px 0; }
-.f-icon { color: var(--text-muted); font-size: 1.5rem; transition: 0.3s; }
-.f-icon:hover { color: var(--gold); }
-.copyright { margin-top: 40px; font-size: 0.75rem; color: #555; }
+
+.f-logo {
+    height: 50px;
+    margin-bottom: 20px;
+}
+
+.f-socials {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 25px 0;
+}
+
+.f-icon {
+    color: var(--text-muted);
+    font-size: 1.5rem;
+    transition: 0.3s;
+}
+
+.f-icon:hover {
+    color: var(--gold);
+}
+
+.copyright {
+    margin-top: 40px;
+    font-size: 0.75rem;
+    color: #555;
+}
 
 /* 📱 RESPONSIVE */
 @media (max-width: 992px) {
-    .nav-links { display: none; }
-    .mobile-menu-icon { display: block; }
-    .collection-grid, .space-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
-    
-    .collage-container { grid-template-columns: 1fr; gap: 40px; }
-    .collage-col { flex-direction: row; flex-wrap: wrap; justify-content: center; }
-    .col-img.small, .col-img.tall { height: 200px; width: 45%; } /* Make collage images side-by-side on mobile */
+    .nav-links {
+        display: none;
+    }
+
+    .mobile-menu-icon {
+        display: block;
+    }
+
+    .collection-grid,
+    .space-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .collage-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .collage-col {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .col-img.small,
+    .col-img.tall {
+        height: 200px;
+        width: 45%;
+    }
+
+    /* Make collage images side-by-side on mobile */
 }
 
 
@@ -325,7 +696,8 @@ footer {
    📄 PAGE HEADER (The Top Title Section)
    ========================================= */
 .page-header {
-    padding-top: 150px; /* Pushes content down below fixed navbar */
+    padding-top: 150px;
+    /* Pushes content down below fixed navbar */
     padding-bottom: 40px;
     padding-left: 20px;
     padding-right: 20px;
@@ -354,15 +726,17 @@ footer {
    ========================================= */
 .section-wrapper {
     /* Increased width to 95% and max-width to 1800px so images get bigger */
-    padding: 60px 2.5% 100px; 
-    max-width: 1800px; 
+    padding: 60px 2.5% 100px;
+    max-width: 1800px;
     margin: 0 auto;
 }
 
 .collection-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 Columns on Desktop */
-    gap: 15px; /* Reduced gap so images get wider */
+    grid-template-columns: repeat(4, 1fr);
+    /* 4 Columns on Desktop */
+    gap: 15px;
+    /* Reduced gap so images get wider */
 }
 
 /* =========================================
@@ -372,14 +746,16 @@ footer {
     background: transparent;
     text-align: center;
     position: relative;
-    cursor: default; /* Regular cursor, no pointer hand */
+    cursor: default;
+    /* Regular cursor, no pointer hand */
 }
 
 /* IMAGE CONTAINER (Made Taller - 5:8 Ratio) */
 .c-img-box {
     position: relative;
     width: 100%;
-    aspect-ratio: 5/8; /* ⬅️ This keeps them Tall & Big */
+    aspect-ratio: 5/8;
+    /* ⬅️ This keeps them Tall & Big */
     overflow: hidden;
     margin-bottom: 15px;
     background-color: var(--bg-card);
@@ -398,7 +774,8 @@ footer {
 
 /* ENSURE NO MOVEMENT ON HOVER */
 .collection-card:hover .c-img-box img {
-    transform: none !important; /* Forces image to stay still */
+    transform: none !important;
+    /* Forces image to stay still */
 }
 
 /* OVERLAY (Dark Gradient on Hover) */
@@ -408,9 +785,10 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
     opacity: 0;
-    transition: opacity 0.3s ease; /* Only the dark shade fades in */
+    transition: opacity 0.3s ease;
+    /* Only the dark shade fades in */
 }
 
 /* Show Overlay on Hover */
@@ -427,42 +805,51 @@ footer {
     position: absolute;
     bottom: 15px;
     right: 15px;
-    display: flex;       /* Puts buttons side by side */
-    flex-direction: column; /* CHANGE TO 'row' if you want side-by-side, 'column' stacks them */
-    gap: 10px;           /* Space between buttons */
-    align-items: flex-end; /* Aligns them to the right */
+    display: flex;
+    /* Puts buttons side by side */
+    flex-direction: column;
+    /* CHANGE TO 'row' if you want side-by-side, 'column' stacks them */
+    gap: 10px;
+    /* Space between buttons */
+    align-items: flex-end;
+    /* Aligns them to the right */
 }
 
 /* 2. The Button Style */
 .overlay-btn {
     /* Removed position: absolute */
-    position: relative; 
+    position: relative;
     background-color: var(--gold);
     color: #000;
-    padding: 10px 20px;       /* Slightly smaller padding to fit two */
+    padding: 10px 20px;
+    /* Slightly smaller padding to fit two */
     text-transform: uppercase;
     font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 1px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     cursor: pointer;
     transition: all 0.3s ease;
     text-decoration: none;
-    display: inline-flex;     /* Aligns icon and text */
+    display: inline-flex;
+    /* Aligns icon and text */
     align-items: center;
-    gap: 8px;                 /* Space between icon and text */
+    gap: 8px;
+    /* Space between icon and text */
     width: fit-content;
 }
 
 .overlay-btn:hover {
     background-color: #fff;
-    transform: translateX(-5px); /* Nice slide effect on hover */
+    transform: translateX(-5px);
+    /* Nice slide effect on hover */
 }
 
 /* TEXT DETAILS */
 .c-details h3 {
     font-family: 'Playfair Display', serif;
-    font-size: 1.25rem; /* Slightly larger text */
+    font-size: 1.25rem;
+    /* Slightly larger text */
     color: var(--text-main);
     margin-bottom: 5px;
     font-weight: 600;
@@ -491,7 +878,7 @@ footer {
         grid-template-columns: repeat(2, 1fr);
         gap: 15px;
     }
-    
+
     /* Ensure Page Header text size adjusts if needed */
     .page-header .sec-title {
         font-size: 2.5rem;
@@ -500,16 +887,26 @@ footer {
 
 /* Mobile (2 Columns) */
 @media (max-width: 500px) {
-    .section-wrapper { padding: 40px 10px; } /* Use full screen width */
-    
-    .collection-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 8px; /* Very tight gap for max image size */
+    .section-wrapper {
+        padding: 40px 10px;
     }
 
-    .c-details h3 { font-size: 1rem; }
-    .c-details p { font-size: 0.7rem; }
-    
+    /* Use full screen width */
+
+    .collection-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        /* Very tight gap for max image size */
+    }
+
+    .c-details h3 {
+        font-size: 1rem;
+    }
+
+    .c-details p {
+        font-size: 0.7rem;
+    }
+
     .overlay-btn {
         padding: 8px 12px;
         font-size: 0.7rem;
@@ -529,7 +926,7 @@ footer {
     /* Create 4 equal columns */
     grid-template-columns: repeat(4, 1fr);
     /* Set a base height for rows (adjust as needed) */
-    grid-auto-rows: 250px; 
+    grid-auto-rows: 250px;
     gap: 15px;
     padding-bottom: 50px;
 }
@@ -544,7 +941,8 @@ footer {
 .mosaic-item img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensures image fills the box without stretching */
+    object-fit: cover;
+    /* Ensures image fills the box without stretching */
     display: block;
 }
 
@@ -569,8 +967,11 @@ footer {
 /* 🌑 OVERLAY EFFECT (Same as before) */
 .g-overlay {
     position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.6);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -589,16 +990,17 @@ footer {
     text-transform: uppercase;
     font-size: 0.85rem;
     letter-spacing: 2px;
-    background: rgba(0,0,0,0.4);
+    background: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(2px);
 }
 
 /* 📐 IMAGE & VIDEO SIZING LOGIC */
-.mosaic-item img, 
+.mosaic-item img,
 .mosaic-item video {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensures video fills the box perfectly */
+    object-fit: cover;
+    /* Ensures video fills the box perfectly */
     display: block;
 }
 
@@ -610,10 +1012,11 @@ footer {
         grid-template-columns: repeat(2, 1fr);
         grid-auto-rows: 200px;
     }
-    
+
     /* Reset 'Wide' & 'Big' to fit 2 columns nicely */
-    .mosaic-item.wide, .mosaic-item.big {
-        grid-column: span 2; 
+    .mosaic-item.wide,
+    .mosaic-item.big {
+        grid-column: span 2;
     }
 }
 
@@ -624,14 +1027,17 @@ footer {
         flex-direction: column;
         gap: 10px;
     }
-    
+
     .mosaic-item {
-        height: 300px; /* Fixed height for mobile items */
+        height: 300px;
+        /* Fixed height for mobile items */
         width: 100%;
     }
-    
+
     /* Reset spans for flex layout */
-    .mosaic-item.tall, .mosaic-item.wide, .mosaic-item.big {
+    .mosaic-item.tall,
+    .mosaic-item.wide,
+    .mosaic-item.big {
         grid-column: auto;
         grid-row: auto;
     }
@@ -648,8 +1054,10 @@ footer {
 /* The Row Container */
 .story-row {
     display: flex;
-    align-items: center; /* Vertically center text with image */
-    gap: 60px; /* Space between text and image */
+    align-items: center;
+    /* Vertically center text with image */
+    gap: 60px;
+    /* Space between text and image */
     margin-bottom: 100px;
 }
 
@@ -660,7 +1068,8 @@ footer {
 
 /* Text Section */
 .story-text {
-    flex: 1; /* Takes up 50% width */
+    flex: 1;
+    /* Takes up 50% width */
 }
 
 .story-subtitle {
@@ -683,14 +1092,17 @@ footer {
 .story-text p {
     color: var(--text-muted);
     font-size: 1rem;
-    line-height: 1.8; /* Good readability */
+    line-height: 1.8;
+    /* Good readability */
     margin-bottom: 20px;
 }
 
 /* Image Section */
 .story-image {
-    flex: 1; /* Takes up 50% width */
-    height: 400px; /* Fixed height for consistency */
+    flex: 1;
+    /* Takes up 50% width */
+    height: 400px;
+    /* Fixed height for consistency */
     position: relative;
 }
 
@@ -698,17 +1110,21 @@ footer {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border: 1px solid rgba(212, 175, 55, 0.2); /* Subtle gold border */
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    /* Subtle gold border */
 }
 
 /* Add a fancy gold offset border effect */
 .story-image::after {
     content: '';
     position: absolute;
-    top: 20px; left: 20px;
-    width: 100%; height: 100%;
+    top: 20px;
+    left: 20px;
+    width: 100%;
+    height: 100%;
     border: 1px solid var(--gold);
-    z-index: -1; /* Behind the image */
+    z-index: -1;
+    /* Behind the image */
 }
 
 /* Quote Box */
@@ -747,23 +1163,27 @@ footer {
 /* 📱 RESPONSIVE STORY */
 @media (max-width: 992px) {
     .story-row {
-        flex-direction: column; /* Stack vertically on tablet */
+        flex-direction: column;
+        /* Stack vertically on tablet */
         gap: 30px;
         margin-bottom: 60px;
     }
-    
+
     /* Keep stacking order natural on mobile */
     .story-row.reverse {
-        flex-direction: column; 
+        flex-direction: column;
     }
 
     .story-image {
         width: 100%;
-        height: 300px; /* Smaller height on mobile */
+        height: 300px;
+        /* Smaller height on mobile */
     }
-    
+
     .story-image::after {
-        top: 10px; left: 10px; /* Smaller offset */
+        top: 10px;
+        left: 10px;
+        /* Smaller offset */
     }
 
     .story-text h2 {
@@ -787,7 +1207,7 @@ footer {
 
 .contact-card {
     background-color: var(--bg-card);
-    border: 1px solid rgba(255,255,255,0.05);
+    border: 1px solid rgba(255, 255, 255, 0.05);
     padding: 40px 20px;
     text-align: center;
     transition: transform 0.3s ease, border-color 0.3s ease;
@@ -841,6 +1261,7 @@ footer {
     border-color: #25D366;
     color: white;
 }
+
 .wa-btn-style:hover {
     background-color: var(--rolex-green);
     border-color: var(--rolex-green);
@@ -892,10 +1313,11 @@ footer {
 /* 📱 RESPONSIVE CONTACT */
 @media (max-width: 992px) {
     .contact-grid {
-        grid-template-columns: 1fr; /* Stack cards vertically */
+        grid-template-columns: 1fr;
+        /* Stack cards vertically */
         gap: 20px;
     }
-    
+
     .contact-card {
         padding: 30px 20px;
     }
