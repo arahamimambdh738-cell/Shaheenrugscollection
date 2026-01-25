@@ -1305,13 +1305,7 @@ footer {
 
 
 /* SEO-safe hidden H1 */
-.seo-h1 {
-    position: absolute;
-    left: -9999px;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-}
+
 
 /* Preserve existing hero typography */
 .hero-title {
@@ -1324,4 +1318,15 @@ footer {
 .visually-hidden {
   position: absolute;
   left: -9999px;
+}
+
+/* 🔒 SEO-SAFE H1 — BULLETPROOF (DESKTOP + MOBILE) */
+.seo-h1 {
+    position: fixed !important;
+    top: -10000px !important;
+    left: -10000px !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    white-space: nowrap !important;
 }
